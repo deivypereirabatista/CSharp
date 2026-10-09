@@ -12,11 +12,10 @@ public class Program
         //number = 999; //Ele não aceita pois a constante não aceita
 
 
-        var name = "Deivy";
+        var name = "Deivy"; //Considera sempre o primeiro tipo colocado sem precisar declarar, mas depois que escolhe não muda de tipo.
 
-        var numberVar = 2000;
-
-        Console.WriteLine(name);
-        Console.WriteLine(numberVar);
+        //dynamic aceita a mudança de tipo no meio do código
+        dynamic house = "Apartament";
+        house = 30;
     }
 }
