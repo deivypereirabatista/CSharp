@@ -1,5 +1,7 @@
 ﻿namespace Aula03;
 
+using Aula03.Models.pj;
+
 public class Program
 {
     public static void Main()
@@ -17,5 +19,15 @@ public class Program
         //dynamic aceita a mudança de tipo no meio do código
         dynamic house = "Apartament";
         house = 30;
+
+        var pessoa = new Pessoa()
+        {
+            Id = 3,
+            Nome = "Teste"
+        };
+
+        Console.WriteLine(pessoa);
+
+
     }
 }
