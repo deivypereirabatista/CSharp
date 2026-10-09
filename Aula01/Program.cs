@@ -6,5 +6,6 @@ public class Program
     {
         Console.WriteLine("Olá, Mundo!");
         Console.WriteLine("Iniciando no .NET");
+        Console.WriteLine("Teste de CSharp no VsCode");
     }
 }
