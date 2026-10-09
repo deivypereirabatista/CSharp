@@ -20,11 +20,7 @@ public class Program
         dynamic house = "Apartament";
         house = 30;
 
-        var pessoa = new Pessoa()
-        {
-            Id = 3,
-            Nome = "Teste"
-        };
+        var pessoa = new Pessoa(3, "teste");
 
         Console.WriteLine(pessoa);
 
