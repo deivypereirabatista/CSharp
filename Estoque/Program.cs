@@ -1,8 +1,56 @@
 ﻿
 try
 {
-    Produto produto1 = new Produto("Notebook", 4);
-    produto1.Exibir();
+    Produto notebook = new Produto("Notebook", 4);
+    notebook.Exibir();
+    
+}
+catch (ArgumentException ex)
+{
+    Console.WriteLine(ex.Message);
+}
+
+try
+{
+    Produto tablet = new Produto("Tablet", 4);
+    tablet.AdicionarEstoque(2);
+    tablet.RemoverEstoque(5);
+    tablet.Exibir();
+    
+}
+catch (ArgumentException ex)
+{
+    Console.WriteLine(ex.Message);
+}
+
+try
+{
+    Produto tabletPositivo = new Produto("Tablet Positivo", -2);
+    tabletPositivo.Exibir();
+    
+}
+catch (ArgumentException ex)
+{
+    Console.WriteLine(ex.Message);
+}
+
+try
+{
+    Produto relogio = new Produto("Relogio", 4);
+    relogio.RemoverEstoque(5);
+    relogio.Exibir();
+    
+}
+catch (ArgumentException ex)
+{
+    Console.WriteLine(ex.Message);
+}
+
+try
+{
+    Produto alianca = new Produto("Aliança", 4);
+    alianca.AdicionarEstoque(0);
+    alianca.Exibir();
     
 }
 catch (ArgumentException ex)
@@ -13,6 +61,8 @@ catch (ArgumentException ex)
 try
 {
     Produto produto2 = new Produto("Celular", 5);
+    produto2.Desativar();
+    produto2.RemoverEstoque(5);
     produto2.Exibir();
 }
 catch (ArgumentException ex)
@@ -20,7 +70,7 @@ catch (ArgumentException ex)
     Console.WriteLine(ex.Message);
 }
 
-
+Console.WriteLine("Fim do programa");
 
 
 class Produto
@@ -66,16 +116,25 @@ class Produto
         }
     }
 
-    public void RemoverEstoque(int quantidade, string produto)
+    public void RemoverEstoque(int quantidade)
     {
-        if (quantidade > 0)
+        if (quantidade <= 0)
         {
-            Quantidade = Quantidade - quantidade;
+            throw new ArgumentException("Quantidade inválida. Somente números positivos maiores que 0.");
         }
-        else
+
+        if (quantidade > Quantidade)
         {
-            throw new ArgumentException("Quantidade Inválida! Somente números Positivos!");
+            throw new ArgumentException("A quantidade escrita não pode ser maior que a quantidade em estoque!");
         }
+
+        if (Ativo == false)
+        {
+            throw new ArgumentException("Produto não está ativo no estoque!");
+        }
+
+        Quantidade = Quantidade - quantidade;
+
     }
 
     public void Desativar()
